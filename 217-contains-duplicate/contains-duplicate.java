@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> map =new HashSet<>();
         for(int num:nums){
@@ -9,5 +9,19 @@ class Solution {
         return false;
 
     }
-}
-//Hashset cannot contains duplicate values   
+}*/
+//Hashset cannot contains duplicate values 
+class Solution{
+    public boolean containsDuplicate(int[] nums){
+        HashSet<Integer> map = new HashSet<>();
+        for(int num:nums){
+            if(map.contains(num)){
+                return true;
+         
+            }
+            map.add(num);
+
+        }
+        return false;
+        }
+    }  
