@@ -1,4 +1,4 @@
-import java.util.*;
+/*import java.util.*;
 
 class Solution {
     public int[] pivotArray(int[] nums, int pivot) {
@@ -32,5 +32,40 @@ class Solution {
         }
 
         return result;
+    }
+}
+*/
+
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+
+        int[] ans = new int[nums.length];
+        int index = 0;
+
+        // Store smaller elements
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < pivot) {
+                ans[index] = nums[i];
+                index++;
+            }
+        }
+
+        // Store pivot elements
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == pivot) {
+                ans[index] = nums[i];
+                index++;
+            }
+        }
+
+        // Store greater elements
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > pivot) {
+                ans[index] = nums[i];
+                index++;
+            }
+        }
+
+        return ans;
     }
 }
