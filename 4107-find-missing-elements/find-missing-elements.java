@@ -1,28 +1,30 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 class Solution {
     public List<Integer> findMissingElements(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        
-        // Fill set and find min, max
+        int minVal = Integer.MAX_VALUE;
+        int maxVal = Integer.MIN_VALUE;
+        Set<Integer> present = new HashSet<>();
+
+        // Find min, max, and store elements in set
         for (int num : nums) {
-            set.add(num);
-            min = Math.min(min, num);
-            max = Math.max(max, num);
+            minVal = Math.min(minVal, num);
+            maxVal = Math.max(maxVal, num);
+            present.add(num);
         }
-        
+
         List<Integer> result = new ArrayList<>();
-        
-        // Check missing numbers
-        for (int i = min; i <= max; i++) {
-            if (!set.contains(i)) {
+
+        // Check for missing elements in ascending order
+        for (int i = minVal; i <= maxVal; i++) {
+            if (!present.contains(i)) {
                 result.add(i);
             }
         }
-        
+
         return result;
     }
 }
